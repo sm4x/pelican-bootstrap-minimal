@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="utf-8" />
+
+        <!-- General medatada -->
+        <meta name="author" content="{{ AUTHOR }}" />
+        <meta name="title" content="{% block title %}{{ SITENAME }}{% endblock %}" />
+        <meta name="description" content="{% block description %}{{ SITEDESCRIPTION }}{% endblock %}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- Social media tags -->
+        <meta property="og:title" content="{{ self.title() }}" />
+        <meta property="og:description" content="{{ self.description() }}" />
+        <meta property="og:image" content="{% block image %}{{ SITEURL }}/images/cover-image.jpg{% endblock %}" />
+        <meta property="og:url" content="{% block url %}{{ SITEURL }}{% endblock %}" />
+        <meta property="og:site_name" content="{{ SITENAME }}" />
+        <meta name="twitter:site" content="@sm4x" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image:alt" content="{{ self.description() }}" />
+
+        <!-- Page title -->
+        <title>{{ self.title() }}</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{{ SITEURL }}/images/logo_16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="{{ SITEURL }}/images/logo_32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{{ SITEURL }}/images/logo_96.png" sizes="96x96" />
+
+        <!-- Bootstrap CSS -->
+            <!-- Static Bootstrap goes in here -->
+            <!-- <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <!-- RSS and Atom feeds -->
+        {% if FEED_ALL_ATOM %}
+        <link
+            href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}"
+            type="application/atom+xml"
+            rel="alternate"
+            title="{{ SITENAME }} Atom Feed"
+        />
+        {% endif %} {% if FEED_ALL_RSS %}
+        <link
+            href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}"
+            type="application/rss+xml"
+            rel="alternate"
+            title="{{ SITENAME }} RSS Feed"
+        />
+        {% endif %}
+
+        <!-- Block for additional page specific header tags -->
+        <!-- prettier-ignore -->
+        {% block extra_head %}
+        {% endblock extra_head %}
+        
+        {% endblock head %}
+    </head>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <body>
+        <!-- Navigation bar -->
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown link
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </header>
+
+        <!-- Page content block -->
+        {% block content %} 
+        
+        {% endblock %}
+
+        <!-- Footer -->
+        <footer>
+            <h1>This is templates/base.html footer</h1>
+        </footer>
+
+        <!-- JavaScript -->
+          <!-- Static Bootstrap JS goes in here 
+            <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/popper.min.js"></script>
+            <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
+            <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js"></script>-->
+          <!-- CDN Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- Optional page specific scripts block -->
+        {% block scripts %} 
+        {% endblock %}
+    </body>
+</html>
